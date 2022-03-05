@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Pokemon Name</th>
+        <th scope="col">Pokemon Type</th>
+        <th scope="col">Category</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pokemon in pokemons %}
+            <tr>
+                <th scope="row">{{pokemon.id}}</th>
+                <td>{{pokemon.poke_name}}</td>
+                <td>{{pokemon.poke_type}}</td>
+                <td>{{pokemon.category}}</td>
+                <td>
+                    <img width="45" src="{{url_for('static', filename='img/' + pokemon.img_name)}}" class="img-thumbnail">
+                </td>
+            </tr>
+        {% endfor %}
+      
+    </tbody>
+</table>

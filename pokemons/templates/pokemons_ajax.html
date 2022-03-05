@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{title}}</h1>
+        <hr>
+        
+        <div class="input-group mb-3">
+            <input id="poke_name" type="text" class="form-control" placeholder="Pokemon's name" >
+            <button id="btn_search" class="btn btn-outline-success"><i class="bi bi-search-heart"></i> Search</button>
+        </div>
+        
+        <div id="content"></div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            function load_pokemons(poke_name) {
+                $.ajax({
+                    url: "/search_pokemon_ajax",
+                    method: "POST",
+                    data: {query: poke_name },
+                    success: function(data) {
+                        $('#content').html(data);
+                        $('#content').append(data.htmlpokemons);
+                    }
+                });
+            }
+            $('#btn_search').click(function(){
+                var poke_name = $('#poke_name').val();
+                //alert(poke_name);
+                load_pokemons(poke_name);
+                $('#poke_name').val('');
+            });
+        });
+    </script>
+{% endblock %}
+
+
+

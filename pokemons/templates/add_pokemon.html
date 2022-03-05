@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{title}}</h1>
+        <hr>
+        <form method="post">
+            <div class="mb-3">
+              <label for="poke_name" class="form-label">Pokemon Name</label>
+              <input type="text" class="form-control" id="poke_name" name="poke_name">              
+            </div>
+            <div class="mb-3">
+                <label for="poke_type" class="form-label">Pokemon Type</label>
+                <input type="text" class="form-control" id="poke_type" name="poke_type">              
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category">              
+            </div>
+            <button type="submit" class="btn btn-outline-primary"><i class="bi bi-plus-circle"></i> Add New Pokemon</button>
+        </form>
+    </div>
+{% endblock %}
+
+

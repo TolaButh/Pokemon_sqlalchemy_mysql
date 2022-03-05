@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{title}}</h1>
+        <hr>
+        <form action="{{url_for('search_pokemon')}}" method="post">
+            <div class="input-group mb-3">
+                <input name="poke_name" type="text" class="form-control" placeholder="Pokemon's name" >
+                <button class="btn btn-outline-success" type="submit"><i class="bi bi-search-heart"></i> Search</button>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pokemon Name</th>
+                <th scope="col">Pokemon Type</th>
+                <th scope="col">Category</th>
+                <th scope="col">Image</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for pokemon in pokemons %}
+                    <tr>
+                        <th scope="row">{{pokemon.id}}</th>
+                        <td>{{pokemon.poke_name}}</td>
+                        <td>{{pokemon.poke_type}}</td>
+                        <td>{{pokemon.category}}</td>
+                        <td>
+                            <img width="45" src="{{url_for('static', filename='img/' + pokemon.img_name)}}" class="img-thumbnail">
+                        </td>
+                    </tr>
+                {% endfor %}
+              
+            </tbody>
+          </table>
+    </div>
+{% endblock %}
+
+
